@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Channels app
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bgtasks.wsgi.application'
 
+# Channels root ASGI app
+ASGI_APPLICATION = 'bgtasks.routing.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -77,6 +83,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+
+# Channels layer configuration
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLalyer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)]
+        }
     }
 }
 
