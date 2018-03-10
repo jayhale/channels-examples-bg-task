@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# direnv
+.envrc
+.direnv/
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
